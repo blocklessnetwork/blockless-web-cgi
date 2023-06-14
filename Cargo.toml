@@ -1,0 +1,12 @@
+[package]
+name = "php-cgi"
+version = "0.1.0"
+description = "wasm php demo"
+keywords = ["webassembly", "wasm"]
+readme = "README.md"
+edition = "2021"
+
+
+[dependencies]
+bytecodec = "0.4.15"
+httpcodec = "0.2.3"

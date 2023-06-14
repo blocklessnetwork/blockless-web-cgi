@@ -1,2 +1,6 @@
 target/
 .DS_Store
+**/*.rs.bk
+._target
+.log
+Cargo.lock
