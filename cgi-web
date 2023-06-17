@@ -1,0 +1,16 @@
+#! /usr/bin/env python3
+
+import getopt,sys,json
+
+opts, args = getopt.getopt(sys.argv[1:], '', ['ext_verify'])
+verify = {"alias": "cgi-web","description": "this is cgi-web test","is_cgi": True}
+is_verify = False
+for o, a in opts:
+    if o in ('--ext_verify'):
+        is_verify = True
+
+if is_verify:
+    print(json.dumps(verify))
+    sys.exit(0)
+
+print("web-cgi: hello world")

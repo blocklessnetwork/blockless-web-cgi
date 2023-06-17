@@ -1,13 +1,12 @@
 [package]
-name = "php-cgi"
+name = "blockless-web-cgi"
 version = "0.1.0"
-description = "wasm php demo"
+description = "blockless wasm cgi demo"
 keywords = ["webassembly", "wasm"]
 readme = "README.md"
 edition = "2021"
 
-
 [dependencies]
 bytecodec = "0.4.15"
 httpcodec = "0.2.3"
-blockless-sdk = {path = "/Users/join/Downloads/sdk-rust"}
+blockless-sdk = "0.1.1"
