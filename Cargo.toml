@@ -5,6 +5,8 @@ description = "blockless wasm cgi demo"
 keywords = ["webassembly", "wasm"]
 readme = "README.md"
 edition = "2021"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/blocklessnetwork/blockless-web-cgi"
 
 [dependencies]
 bytecodec = "0.4.15"
