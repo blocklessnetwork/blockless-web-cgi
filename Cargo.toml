@@ -10,3 +10,4 @@ edition = "2021"
 [dependencies]
 bytecodec = "0.4.15"
 httpcodec = "0.2.3"
+blockless-sdk = {path = "/Users/join/Downloads/sdk-rust"}

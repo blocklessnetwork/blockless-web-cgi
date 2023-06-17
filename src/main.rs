@@ -2,6 +2,7 @@ use bytecodec::DecodeExt;
 use httpcodec::{HttpVersion, ReasonPhrase, Request, RequestDecoder, Response, StatusCode};
 use std::io::{Read, Write};
 use std::net::{Shutdown, TcpStream};
+use std::result;
 use std::{net::TcpListener, os::fd::FromRawFd};
 
 #[link(wasm_import_module = "blockless_socket")]
@@ -36,12 +37,19 @@ fn create_tcp_bind_socket(addr: &str) -> Result<u32, SocketErrorKind> {
     }
 }
 
-fn handle_http(req: Request<String>) -> bytecodec::Result<Response<String>> {
+fn handle_http(_req: Request<String>) -> bytecodec::Result<Response<String>> {
+    let extensions = blockless_sdk::CGIListExtensions::new();
+    let extensions = extensions.expect("CGIListExtensions new error.");
+    let command = extensions.command("cgi-web", Vec::new(), Vec::new());
+    let result = match command {
+        Ok(mut command) => command.exec_command().expect("execute the cgi error"),
+        Err(e) => format!("commond found error. {e:?}"),
+    };
     Ok(Response::new(
         HttpVersion::V1_0,
         StatusCode::new(200)?,
         ReasonPhrase::new("")?,
-        format!("echo: {}", req.body()),
+        result,
     ))
 }
 
@@ -89,6 +97,6 @@ fn main() {
     let listener = unsafe { TcpListener::from_raw_fd(rs as _) };
     loop {
         let rs = listener.accept().unwrap();
-        handle_client(rs.0);
+        let _ = handle_client(rs.0);
     }
 }
