@@ -2,6 +2,7 @@
 
 import getopt,sys,json
 
+#### this is security for cgi plugin
 opts, args = getopt.getopt(sys.argv[1:], '', ['ext_verify'])
 verify = {"alias": "cgi-web","description": "this is cgi-web test","is_cgi": True}
 is_verify = False
@@ -12,5 +13,6 @@ for o, a in opts:
 if is_verify:
     print(json.dumps(verify))
     sys.exit(0)
+#### this is security for cgi plugin#####
 
 print("web-cgi: hello world")
