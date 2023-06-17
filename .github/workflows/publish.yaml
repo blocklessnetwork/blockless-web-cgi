@@ -15,6 +15,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
             toolchain: stable
+            args: --target wasm32-wasi
             override: true
       - uses: katyo/publish-crates@v2
         with:
