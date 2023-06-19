@@ -1,6 +1,6 @@
 [package]
 name = "blockless-web-cgi"
-version = "0.1.0"
+version = "0.1.1"
 description = "blockless wasm cgi demo"
 keywords = ["webassembly", "wasm"]
 readme = "README.md"
